@@ -1,30 +1,57 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Registrar";
 }
+<head>
+    <link href="~/css/login.css" rel="stylesheet" />
+</head>
+<p class="tip">Click on button in image container</p>
+<div class="cont">
+        <!-- Formulario de Registro -->
+        <div class="form sign-up">
+            <h2>Es tiempo de cuidarnos,</h2>
+            <form method="post" asp-action="Registrar">
+                <label for="regCorreo">
+                    <span>Correo</span>
+                    <input type="email" name="correo" id="regCorreo" required />
+                </label>
+                <label for="regClave">
+                    <span>Contraseña</span>
+                    <input type="password" name="clave" id="regClave" required />
+                </label>
+                <label for="regConfClave">
+                    <span>Confirmar Contraseña</span>
+                    <input type="password" name="confClave" id="regConfClave" required />
+                </label>
+                <button type="submit" class="submit">Registrar</button>
+            </form>
+            @if (ViewData["mensajeRegistro"] != null)
+            {
+                <div class="alert alert-info">
+                    @ViewData["mensajeRegistro"]
+                </div>
+            }
+            @if (TempData["mensajeExito"] != null)
+            {
+                <div class="alert alert-success">
+                    @TempData["mensaje"]
+                </div>
+            }
+        </div>
+    </div>
+</div>
 
-<h1>Registrar</h1>
+<a href="https://dribbble.com/shots/3306190-Login-Registration-form" target="_blank" class="icon-link">
+    <img src="http://icons.iconarchive.com/icons/uiconstock/socialmedia/256/Dribbble-icon.png">
+</a>
+<a href="https://codepen.io/suez/pen/XWyBpre" target="_blank" class="link-footer">New 2023 Version</a>
+<a href="https://twitter.com/NikolayTalanov" target="_blank" class="icon-link icon-link--twitter">
+    <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/twitter-128.png">
+</a>
 
-<form method="post">
-    <div>
-        <label for="correo">Correo:</label>
-        <input type="email" name="correo" id="correo" required />
-    </div>
-    <div>
-        <label for="clave">Contraseña:</label>
-        <input type="password" name="clave" id="clave" required />
-    </div>
-    <div>
-        <label for="confClave">Confirmar Contraseña:</label>
-        <input type="password" name="confClave" id="confClave" required />
-    </div>
-    <div>
-        <button type="submit">Registrar</button>
-    </div>
-</form>
-@if (ViewData["mensaje"] != null)
-{
-    <div class="alert alert-info">
-        @ViewData["mensaje"]
-    </div>
-}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelector('.img__btn').addEventListener('click', function () {
+            document.querySelector('.cont').classList.toggle('s--signup');
+        });
+    });
+</script>

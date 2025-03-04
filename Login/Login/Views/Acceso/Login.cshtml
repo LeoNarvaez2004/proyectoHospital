@@ -20,10 +20,10 @@
             </label>
             <button type="submit" class="submit">Iniciar Sesión</button>
         </form>
-        @if (ViewData["mensajeLogin"] != null)
+        @if (ViewData["mensaje"] != null)
         {
             <div class="alert alert-info mt-3">
-                @ViewData["mensajeLogin"]
+                @ViewData["mensaje"]
             </div>
         }
     </div>
@@ -71,7 +71,7 @@
             @if (TempData["mensajeExito"] != null)
             {
                 <div class="alert alert-success">
-                    @TempData["mensajeExito"]
+                    @TempData["mensaje"]
                 </div>
             }
         </div>
