@@ -8,6 +8,8 @@ builder.Services.AddAuthentication("CookieAuth")
     {
         config.Cookie.Name = "UsuarioLogin";
         config.LoginPath = "/Acceso/Login";
+        config.AccessDeniedPath = "/Acceso/Denegado";
+
     });
 
 var app = builder.Build();

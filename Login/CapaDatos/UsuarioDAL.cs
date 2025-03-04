@@ -40,10 +40,12 @@ namespace CapaDatos
 
             return respuesta;
         }
-        public bool IniciarSesion(UsuarioCLS usuario, out string mensaje)
+        public bool IniciarSesion(UsuarioCLS usuario, out string mensaje, out int idUsuario, out string rol)
         {
             bool respuesta = false;
-            mensaje = string.Empty;
+            mensaje = "";
+            idUsuario = 0;
+            rol = "";
 
             using (SqlConnection cn = new SqlConnection(cadenaDato))
             {
@@ -57,18 +59,21 @@ namespace CapaDatos
                         cmd.Parameters.AddWithValue("@correo", usuario.correo);
                         cmd.Parameters.AddWithValue("@clave", usuario.clave);
 
-                        var res = cmd.ExecuteScalar();
-                        if (res != null && res.ToString()!="0")
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            respuesta = true;
-                            mensaje = "Inicio de sesión exitoso";
+                            if (reader.Read())
+                            {
+                                idUsuario = reader.GetInt32(0);
+                                rol = reader.GetString(1);
+                                respuesta = true;
+                                mensaje = "Inicio de sesión exitoso";
+                            }
+                            else
+                            {
+                                respuesta = false;
+                                mensaje = "Usuario o contraseña incorrecta";
+                            }
                         }
-                        else
-                        {
-                            respuesta = false;
-                            mensaje = "Usuario o contraseña incorrecta";
-                        }
-
                     }
                 }
                 catch (Exception e)

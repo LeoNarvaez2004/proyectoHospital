@@ -4,6 +4,9 @@ using System.Security.Cryptography;
 using System.Data.SqlClient;
 using CapaEntidad;
 using CapaDatos;
+using Microsoft.AspNetCore.Authentication;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace Login.Controllers
 {
@@ -15,6 +18,10 @@ namespace Login.Controllers
 
         }
         public IActionResult Registrar()
+        {
+            return View();
+        }
+        public IActionResult Denegado()
         {
             return View();
         }
@@ -57,16 +64,25 @@ namespace Login.Controllers
             return builder.ToString();
         }
         [HttpPost]
-        public IActionResult Login(UsuarioCLS objUser)
+        public async Task<IActionResult> Login(UsuarioCLS objUser)
         {
             objUser.clave = Encriptar(objUser.clave);
             string mensaje;
+            int idUsuario;
+            string rol;
             UsuarioDAL objUserDAL = new UsuarioDAL();
-            bool exito = objUserDAL.IniciarSesion(objUser, out mensaje);
+            bool exito = objUserDAL.IniciarSesion(objUser, out mensaje,out idUsuario, out rol);
             if (exito)
             {
-                ViewData["mensaje"] = mensaje;
-                return RedirectToAction("Citas", "Citas");
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, objUser.correo),
+                    new Claim(ClaimTypes.Role, rol)
+                };
+                var identity = new ClaimsIdentity(claims, "CookieAuth");
+                var principal = new ClaimsPrincipal(identity);
+                await HttpContext.SignInAsync("CookieAuth", principal);
+                return RedirectToAction("Index", "Home");
             }
             else
             {
