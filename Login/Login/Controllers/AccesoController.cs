@@ -14,10 +14,6 @@ namespace Login.Controllers
             return View();
 
         }
-        public IActionResult Registrar()
-        {
-            return View();
-        }
 
         [HttpPost]
         public IActionResult Registrar(UsuarioCLS objUser)
@@ -32,8 +28,17 @@ namespace Login.Controllers
             UsuarioDAL objUserDAL = new UsuarioDAL();
             bool registrado = objUserDAL.RegistrarUsuario(objUser, out string mensaje);
 
-            ViewData["mensaje"] = mensaje;
-            return View();
+            if (registrado)
+            {
+                TempData["mensajeExito"] = "¡Registro exitoso! Por favor, inicia sesión.";
+                return RedirectToAction("Login");
+            }
+            else
+            {
+                ViewData["mensaje"] = mensaje;
+                return View("Login");
+            }
+
         }
 
         private string Encriptar(string cadena)

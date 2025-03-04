@@ -1,34 +1,95 @@
 ﻿@{
     ViewData["Title"] = "Login";
 }
-
-<div class="container">
-    <div class="row justify-content-center mt-5">
-        <div class="col-md-6 col-lg-4">
-            <div class="card shadow">
-                <div class="card-body">
-                    <h2 class="card-title text-center mb-4">Iniciar Sesión</h2>
-                    <form method="post">
-                        <div class="mb-3">
-                            <label for="correo" class="form-label">Correo:</label>
-                            <input type="email" class="form-control" name="correo" id="correo" placeholder="Ingresa tu correo" required />
-                        </div>
-                        <div class="mb-3">
-                            <label for="clave" class="form-label">Contraseña:</label>
-                            <input type="password" class="form-control" name="clave" id="clave" placeholder="Ingresa tu contraseña" required />
-                        </div>
-                        <div class="d-grid">
-                            <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
-                        </div>
-                    </form>
-                    @if (ViewData["mensaje"] != null)
-                    {
-                        <div class="alert alert-info mt-3">
-                            @ViewData["mensaje"]
-                        </div>
-                    }
-                </div>
+<head>
+    <link href="~/css/login.css" rel="stylesheet" />
+</head>
+<p class="tip">Click on button in image container</p>
+<div class="cont">
+    <!-- Formulario de Inicio de Sesión -->
+    <div class="form sign-in">
+        <h2>Bienvenido de vuelta,</h2>
+        <form method="post" asp-action="Login">
+            <label for="loginCorreo">
+                <span>Correo</span>
+                <input type="email" name="correo" id="loginCorreo" required />
+            </label>
+            <label for="loginClave">
+                <span>Contraseña</span>
+                <input type="password" name="clave" id="loginClave" required />
+            </label>
+            <button type="submit">Iniciar Sesión</button>
+        </form>
+        @if (ViewData["mensajeLogin"] != null)
+        {
+            <div class="alert alert-info mt-3">
+                @ViewData["mensajeLogin"]
             </div>
+        }
+    </div>
+
+    <div class="sub-cont">
+        <div class="img">
+            <div class="img__text m--up">
+                <h2>¿Nuevo aquí?</h2>
+                <p>Regístrate</p>
+            </div>
+            <div class="img__text m--in">
+                <h2>¿Ya eres parte de nosotros?</h2>
+                <p>Si ya tienes una cuenta, solo inicia sesión, te extrañamos!</p>
+            </div>
+            <div class="img__btn">
+                <span class="m--up">Registrarse</span>
+                <span class="m--in">Iniciar Sesión</span>
+            </div>
+        </div>
+
+        <!-- Formulario de Registro -->
+        <div class="form sign-up">
+            <h2>Es tiempo de cuidarnos,</h2>
+            <form method="post" asp-action="Registrar">
+                <label for="regCorreo">
+                    <span>Correo</span>
+                    <input type="email" name="correo" id="regCorreo" required />
+                </label>
+                <label for="regClave">
+                    <span>Contraseña</span>
+                    <input type="password" name="clave" id="regClave" required />
+                </label>
+                <label for="regConfClave">
+                    <span>Confirmar Contraseña</span>
+                    <input type="password" name="confClave" id="regConfClave" required />
+                </label>
+                <button type="submit">Registrar</button>
+            </form>
+            @if (ViewData["mensajeRegistro"] != null)
+            {
+                <div class="alert alert-info">
+                    @ViewData["mensajeRegistro"]
+                </div>
+            }
+            @if (TempData["mensajeExito"] != null)
+            {
+                <div class="alert alert-success">
+                    @TempData["mensajeExito"]
+                </div>
+            }
         </div>
     </div>
 </div>
+
+<a href="https://dribbble.com/shots/3306190-Login-Registration-form" target="_blank" class="icon-link">
+    <img src="http://icons.iconarchive.com/icons/uiconstock/socialmedia/256/Dribbble-icon.png">
+</a>
+<a href="https://codepen.io/suez/pen/XWyBpre" target="_blank" class="link-footer">New 2023 Version</a>
+<a href="https://twitter.com/NikolayTalanov" target="_blank" class="icon-link icon-link--twitter">
+    <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/twitter-128.png">
+</a>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelector('.img__btn').addEventListener('click', function () {
+            document.querySelector('.cont').classList.toggle('s--signup');
+        });
+    });
+</script>
