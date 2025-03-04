@@ -84,7 +84,7 @@ namespace CapaDatos
                 try
                 {
                     cn.Open();
-                    using (SqlCommand cmd = new SqlCommand("uspRecuperarCitas", cn))
+                    using (SqlCommand cmd = new SqlCommand("uspGuardarCitas", cn))
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@id", cita.idCita);
@@ -99,8 +99,9 @@ namespace CapaDatos
                 }
                 catch (Exception e)
                 {
-                    return 0;
+                    Console.WriteLine("Error al listar citas: " + e.Message);
                     throw new Exception("Error al listar citas: " + e.Message);
+                    return 0;
                 }
                 return 1;
             }

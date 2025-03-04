@@ -22,16 +22,16 @@ namespace Login.Controllers
             return objCitasBL.GuardarCita(objCitasCLS);
         }
 
-        public int EliminarCita(int idCita)
+        public int EliminarCita(int id)
         {
             CitasBL objCitasBL = new CitasBL();
-            return objCitasBL.EliminarCita(idCita);
+            return objCitasBL.EliminarCita(id);
         }
 
-        public CitasCLS RecuperarCitas(int idCita)
+        public CitasCLS RecuperarCitas(int id)
         {
             CitasBL objCitasBL = new CitasBL();
-            return objCitasBL.RecuperarCitas(idCita);
+            return objCitasBL.RecuperarCitas(id);
         }
 
         public List<CitasCLS> FiltrarCitas(CitasCLS objCitasCLS)
