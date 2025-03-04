@@ -90,5 +90,10 @@ namespace Login.Controllers
                 return View();
             }
         }
+
+        public bool RevisarPermisos()
+        {
+            return User.IsInRole("Admin");
+        }
     }
 }

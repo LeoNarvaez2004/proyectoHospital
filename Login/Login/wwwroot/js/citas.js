@@ -49,7 +49,7 @@ function Editar(id) {
 function Eliminar(id) {
     fetchGet("Citas/EliminarCita/?id=" + id, "json", function (data) {
         confirmacion(undefined, "¿Seguro desea eliminar?", function (resp) {
-            limpiarLaboratorio();
+            limpiarForm();
             Exito();
         });
     });

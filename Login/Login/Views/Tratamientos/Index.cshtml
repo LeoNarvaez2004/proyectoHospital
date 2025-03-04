@@ -4,6 +4,54 @@
 
 <h1>Tratamientos</h1>
 
+<i onclick="Editar(0)" data-bs-toggle="modal" data-bs-target="#operacionesModal"
+   class="btn btn-primary w-25 text-white rounded align-content-center">
+    Nuevo registro
+</i>
+
+<div class="modal fade" id="operacionesModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">Formulario de Laboratorio</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <form id="frmOperaciones">
+                    <div class="mb-3">
+                        <label for="id" class="form-label">ID</label>
+                        <input type="text" class="form-control" name="id" id="id" value="0" readonly>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="pacienteId" class="form-label">ID Paciente</label>
+                        <input type="text" class="form-control" name="pacienteId" id="pacienteId">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="descripcion" class="form-label">Descripción</label>
+                        <textarea class="form-control" name="descripcion" id="descripcion" rows="3"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="fecha" class="form-label">Fecha</label>
+                        <input type="datetime-local" class="form-control" name="fecha" id="fecha">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="costo" class="form-label">Costo</label>
+                        <input type="number" class="form-control" name="costo" id="costo" step="1">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="guardar()" data-bs-dismiss="modal" class="btn btn-success">Enviar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div id="divTabla"></div>
 
 <script src="~/js/generic.js"></script>

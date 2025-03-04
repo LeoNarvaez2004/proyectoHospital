@@ -11,3 +11,52 @@ async function listarMedicos() {
         propiedadId: "id"
     });
 }
+
+async function guardar() {
+    let form = document.getElementById("frmOperaciones");
+    let frm = new FormData(form);
+    confirmacion(undefined, undefined, function (resp) {
+        fetchPost("Medicos/GuardarMedico", "json", frm, function (res) {
+            if (res == 0) {
+                ErrorA();
+                return;
+            }
+            limpiarForm();
+            Exito();
+        });
+
+    });
+}
+
+function Editar(id) {
+    if (id != 0) {
+        fetchGet("Medicos/RecuperarMedico/?id=" + id, "json", function (data) {
+            setN("id", data.id);
+            setN("nombre", data.nombre);
+            setN("apellido", data.apellido);
+            setN("especialidadId", data.especialidadId);
+            setN("telefono", data.telefono);
+            setN("email", data.email);
+
+        });
+    }
+    else {
+        limpiarForm();
+        setN("id", id);
+    }
+
+}
+
+function Eliminar(id) {
+    fetchGet("Medicos/EliminarMedico/?id=" + id, "json", function (data) {
+        confirmacion(undefined, "¿Seguro desea eliminar?", function (resp) {
+            limpiarForm();
+            Exito();
+        });
+    });
+}
+
+function limpiarForm() {
+    limpiarDatos("frmOperaciones");
+    listarMedicos();
+}
