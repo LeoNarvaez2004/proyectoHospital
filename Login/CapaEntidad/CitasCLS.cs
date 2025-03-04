@@ -12,7 +12,6 @@ namespace CapaEntidad
         public int idPaciente { get; set; }
         public int idMedico { get; set; }
         public DateTime fecha { get; set; }
-
         public string estado { get; set; }
     }
 }

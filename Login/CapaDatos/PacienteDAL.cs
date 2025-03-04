@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CapaDatos
 {
-    internal class PacienteDAL : CadenaDAL
+    public class PacienteDAL : CadenaDAL
     {
         public List<PacienteCLS> ListarPacientes()
         {
