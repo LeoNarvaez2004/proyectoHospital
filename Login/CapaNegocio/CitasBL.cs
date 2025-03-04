@@ -15,5 +15,25 @@ namespace CapaNegocio
             CitasDAL objCitasDAL = new CitasDAL();
             return objCitasDAL.ListarCitas();
         }
+        public int GuardarCita(CitasCLS objCitasCLS)
+        {
+            CitasDAL objCitasDAL = new CitasDAL();
+            return objCitasDAL.GuardarCitas(objCitasCLS);
+        }
+        public int EliminarCita(int idCita)
+        {
+            CitasDAL objCitasDAL = new CitasDAL();
+            return objCitasDAL.EliminarCitas(idCita);
+        }
+        public CitasCLS RecuperarCitas(int idCita)
+        {
+            CitasDAL objCitasDAL = new CitasDAL();
+            return objCitasDAL.RecuperarCitas(idCita);
+        }
+        public List<CitasCLS> FiltrarCitas(CitasCLS objCitasCLS)
+        {
+            CitasDAL objCitasDAL = new CitasDAL();
+            return objCitasDAL.FiltrarCitas(objCitasCLS);
+        }
     }
 }
