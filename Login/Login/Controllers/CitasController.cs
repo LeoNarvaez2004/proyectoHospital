@@ -2,6 +2,7 @@
 using CapaEntidad;
 using CapaDatos;
 using CapaNegocio;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Login.Controllers
 {

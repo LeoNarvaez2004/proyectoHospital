@@ -24,13 +24,13 @@
                 </label>
                 <button type="submit" class="submit">Registrar</button>
             </form>
-            @if (ViewData["mensajeRegistro"] != null)
+            @if (ViewData["mensaje"] != null)
             {
                 <div class="alert alert-info">
-                    @ViewData["mensajeRegistro"]
+                    @ViewData["mensaje"]
                 </div>
             }
-            @if (TempData["mensajeExito"] != null)
+            @if (TempData["mensaje"] != null)
             {
                 <div class="alert alert-success">
                     @TempData["mensaje"]

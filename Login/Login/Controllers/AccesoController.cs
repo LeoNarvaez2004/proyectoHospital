@@ -14,6 +14,10 @@ namespace Login.Controllers
             return View();
 
         }
+        public IActionResult Registrar()
+        {
+            return View();
+        }
 
         [HttpPost]
         public IActionResult Registrar(UsuarioCLS objUser)
