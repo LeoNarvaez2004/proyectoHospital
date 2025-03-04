@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using CapaEntidad;
 using CapaDatos;
+using CapaNegocio;
 
 namespace Login.Controllers
 {
@@ -12,7 +13,7 @@ namespace Login.Controllers
         }
         public List<CitasCLS> ListarCitas()
         {
-            CitasDAL objCitasDAL = new CitasDAL();
+            CitasBL objCitasDAL = new CitasBL();
             return objCitasDAL.ListarCitas();
         }
     }
