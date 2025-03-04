@@ -1,9 +1,6 @@
 
-# Project Title
+# Proyexto Unidad 3
 
-A brief description of what this project does and who it's for
-
-Proyecto Unidad 3
 Integrantes: Caetano Flores y Leonardo Narváez
 
 **Proyecto de Sistema de Gestión Hospitalaria** en ASP.NET Core MVC con una arquitectura por capaz para mejorar la escalabilidad y mantenimiento del software.
