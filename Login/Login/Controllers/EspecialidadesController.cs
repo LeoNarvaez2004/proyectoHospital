@@ -6,7 +6,7 @@ namespace Login.Controllers
 {
     public class EspecialidadesController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Especialidades()
         {
             return View();
         }
