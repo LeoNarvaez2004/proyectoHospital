@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "Registrar";
+}
+
+<h1>Registrar</h1>
+
+<form method="post">
+    <div>
+        <label for="correo">Correo:</label>
+        <input type="email" name="correo" id="correo" required />
+    </div>
+    <div>
+        <label for="clave">Contraseña:</label>
+        <input type="password" name="clave" id="clave" required />
+    </div>
+    <div>
+        <label for="confClave">Confirmar Contraseña:</label>
+        <input type="password" name="confClave" id="confClave" required />
+    </div>
+    <div>
+        <button type="submit">Registrar</button>
+    </div>
+</form>
+@if (ViewData["mensaje"] != null)
+{
+    <div class="alert alert-info">
+        @ViewData["mensaje"]
+    </div>
+}
