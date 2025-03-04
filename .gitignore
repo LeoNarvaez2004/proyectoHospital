@@ -1,0 +1,32 @@
+# Archivos de build
+bin/
+obj/
+
+# Archivos generados por Visual Studio
+.vs/
+.vscode/
+.idea/
+
+# Archivos de configuración del usuario
+appsettings.Development.json
+appsettings.Production.json
+appsettings.json
+
+# Archivos temporales
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Archivos de log
+*.log
+
+# Archivos generados por Visual Studio (macOS)
+.vscode/
+
+# Archivos de debug y configuración de entorno
+.env
+
+# Otros archivos temporales
+Thumbs.db
+.DS_Store  # macOS
