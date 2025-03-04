@@ -18,7 +18,7 @@
                 <span>Contraseña</span>
                 <input type="password" name="clave" id="loginClave" required />
             </label>
-            <button type="submit">Iniciar Sesión</button>
+            <button type="submit" class="submit">Iniciar Sesión</button>
         </form>
         @if (ViewData["mensajeLogin"] != null)
         {
@@ -60,7 +60,7 @@
                     <span>Confirmar Contraseña</span>
                     <input type="password" name="confClave" id="regConfClave" required />
                 </label>
-                <button type="submit">Registrar</button>
+                <button type="submit" class="submit">Registrar</button>
             </form>
             @if (ViewData["mensajeRegistro"] != null)
             {
