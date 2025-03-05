@@ -17,7 +17,7 @@ namespace CapaDatos
                 try
                 {
                     cn.Open();
-                    using (SqlCommand cmd = new SqlCommand("Select Id FROM" + tabla, cn))
+                    using (SqlCommand cmd = new SqlCommand("SELECT Id FROM " + tabla + " ORDER BY Id ASC", cn))
                     {
                         cmd.CommandType = System.Data.CommandType.Text;
                         SqlDataReader dr = cmd.ExecuteReader();

@@ -63,13 +63,6 @@ async function fetchPost(url, tipoRespuesta, frm, callback) {
     }
 }
 
-function obtenerClaves(tabla) {
-    let urlCompleta = window.location.protocol + "//" + window.location.host + "/" + "Generic/obtenerClaves";
-    let res = await fetch(urlCompleta);
-    res = await res.json();
-    return res;
-}
-
 let objConfiguracionGlobal;
 
 function pintar(objConfiguracion) {
