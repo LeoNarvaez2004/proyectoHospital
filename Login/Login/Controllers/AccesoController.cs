@@ -7,6 +7,7 @@ using CapaDatos;
 using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace Login.Controllers
 {
@@ -90,7 +91,16 @@ namespace Login.Controllers
                 return View();
             }
         }
+        [HttpPost] // Asegúrate de que sea un método POST
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            // Cerrar la sesión del usuario usando el esquema "CookieAuth"
+            await HttpContext.SignOutAsync("CookieAuth");
 
+            // Redirigir al usuario a la página de inicio de sesión
+            return RedirectToAction("Login", "Acceso");
+        }
         public bool RevisarPermisos()
         {
             return User.IsInRole("Admin");

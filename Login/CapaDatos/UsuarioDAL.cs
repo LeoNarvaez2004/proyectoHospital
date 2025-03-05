@@ -68,18 +68,14 @@ namespace CapaDatos
                                 respuesta = true;
                                 mensaje = "Inicio de sesión exitoso";
                             }
-                            else
-                            {
-                                respuesta = false;
-                                mensaje = "Usuario o contraseña incorrecta";
-                            }
+                           
                         }
                     }
                 }
                 catch (Exception e)
                 {
                     respuesta = false;
-                    mensaje = e.Message;
+                    mensaje = "Usuario o contraseña incorrecta";
                 }
             }
 

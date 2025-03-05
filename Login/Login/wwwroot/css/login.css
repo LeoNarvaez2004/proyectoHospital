@@ -7,6 +7,13 @@
 body {
     font-family: 'Open Sans', Helvetica, Arial, sans-serif;
     background: #ededed;
+    background-image: url('https://img.freepik.com/premium-vector/abstract-chemistry-symbol-soft-blue-background-with-chemical-formulas-molecular-structures-concept-idea-science-innovation-technology_120542-635.jpg?w=1380');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 90vh;
+    background-color: rgba(0, 0, 0, 0.2);
+    background-blend-mode: darken;
 }
 
 input, button {

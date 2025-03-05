@@ -3,17 +3,26 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Login</title>
+    <title>@ViewData["Title"] - Hospital</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Login.styles.css" asp-append-version="true" />
-    <link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css"
-          rel="stylesheet" />
+    <link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        .navbar {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .navbar-hidden {
+            transform: translateY(-100%);
+        }
+    </style>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <!-- Navbar con tema oscuro -->
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Login</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -23,30 +32,37 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Citas" asp-action="Citas">Citas</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Citas" asp-action="Citas">Citas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Especialidades" asp-action="Index">Especialidades</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Especialidades" asp-action="Index">Especialidades</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Facturacion" asp-action="Index">Facturacion</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Facturacion" asp-action="Index">Facturacion</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Medicos" asp-action="Index">Medicos</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Medicos" asp-action="Index">Medicos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Pacientes" asp-action="Index">Pacientes</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Pacientes" asp-action="Index">Pacientes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Tratamientos" asp-action="Index">Tratamientos</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Tratamientos" asp-action="Index">Tratamientos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <form class="d-flex" asp-controller="Acceso" asp-action="Logout" method="post">
+                            <button type="submit" class="btn btn-outline-light">Cerrar Sesión</button>
+                        </form>
+                    }
                 </div>
             </div>
         </nav>
@@ -66,6 +82,36 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const navbar = document.querySelector('.navbar');
+            let timeoutId;
+
+            function hideNavbar() {
+                navbar.classList.add('navbar-hidden');
+            }
+
+            function showNavbar() {
+                navbar.classList.remove('navbar-hidden');
+            }
+
+            navbar.addEventListener('mouseenter', function() {
+                showNavbar();
+                clearTimeout(timeoutId);
+            });
+
+            navbar.addEventListener('mouseleave', function() {
+                timeoutId = setTimeout(hideNavbar, 1000);
+            });
+
+            document.addEventListener('mousemove', function(event) {
+                if (event.clientY < 50) {
+                    showNavbar();
+                    clearTimeout(timeoutId);
+                }
+            });
+        });
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
