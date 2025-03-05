@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Login.Controllers
 {
-    [Authorize (Roles ="Admin")]
+    [Authorize (Roles ="Admin, Usuario")]
     public class CitasController : Controller
     {
         public IActionResult Citas()

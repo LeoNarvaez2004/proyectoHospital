@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Login.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Usuario")]
     public class FacturacionController : Controller
     {
         public IActionResult Index()

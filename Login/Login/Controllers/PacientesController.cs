@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Login.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, Usuario")]
 
     public class PacientesController : Controller
     {
