@@ -1,9 +1,12 @@
 ﻿using CapaEntidad;
 using CapaNegocio;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Login.Controllers
 {
+    [Authorize(Roles = "Admin")]
+
     public class TratamientosController : Controller
     {
         public IActionResult Index()
