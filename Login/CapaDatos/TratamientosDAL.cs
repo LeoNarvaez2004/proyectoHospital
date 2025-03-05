@@ -29,7 +29,7 @@ namespace CapaDatos
                             tratamiento.Id = dr.IsDBNull(0) ? -1 : dr.GetInt32(0);
                             tratamiento.PacienteId = dr.IsDBNull(1) ? -1 : dr.GetInt32(1);
                             tratamiento.Descripcion = dr.IsDBNull(2) ? "" : dr.GetString(2);
-                            tratamiento.Fecha = dr.IsDBNull(3) ? System.DateTime.MinValue : dr.GetDateTime(3);
+                            tratamiento.Fecha = dr.GetDateTime(3);
                             tratamiento.Costo = dr.IsDBNull(4) ? 0 : dr.GetDecimal(4);
                             lista.Add(tratamiento);
                         }
@@ -92,14 +92,14 @@ namespace CapaDatos
                         cmd.Parameters.AddWithValue("@fecha", tratamiento.Fecha);
                         cmd.Parameters.AddWithValue("@costo", tratamiento.Costo);
 
-                        cmd.ExecuteNonQuery();
+                        return cmd.ExecuteNonQuery();
                     }
                 }
                 catch (Exception e)
                 {
+                    return -1;
                     throw new Exception("Error al guardar tratamiento: " + e.Message);
                 }
-                return 1;
             }
         }
         public int EliminarTratamiento(int id)

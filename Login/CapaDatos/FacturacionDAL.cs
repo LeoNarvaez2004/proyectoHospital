@@ -30,7 +30,7 @@ namespace CapaDatos
                             factura.PacienteId = dr.IsDBNull(1) ? -1 : dr.GetInt32(1);
                             factura.Monto = dr.IsDBNull(2) ? 0 : dr.GetDecimal(2);
                             factura.MetodoPago = dr.IsDBNull(3) ? "" : dr.GetString(3);
-                            factura.FechaPago = dr.IsDBNull(4) ? System.DateTime.MinValue : dr.GetDateTime(4);
+                            factura.FechaPago = dr.GetDateTime(4);
                             lista.Add(factura);
                         }
                     }
@@ -92,14 +92,14 @@ namespace CapaDatos
                         cmd.Parameters.AddWithValue("@metodoPago", factura.MetodoPago);
                         cmd.Parameters.AddWithValue("@fechaPago", factura.FechaPago);
 
-                        cmd.ExecuteNonQuery();
+                        return cmd.ExecuteNonQuery();
                     }
                 }
                 catch (Exception e)
                 {
+                    return -1;
                     throw new Exception("Error al guardar facturación: " + e.Message);
                 }
-                return 1;
             }
         }
         public int EliminarFacturacion(int id)

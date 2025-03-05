@@ -32,6 +32,7 @@ function Editar(id) {
     if (id != 0) {
         fetchGet("Tratamientos/RecuperarTratamiento/?id=" + id, "json", function (data) {
             setN("id", data.id);
+            cargarForaneas("Pacientes", "pacienteId");
             setN("pacienteId", data.pacienteId);
             setN("descripcion", data.descripcion);
             setN("fecha", data.fecha);

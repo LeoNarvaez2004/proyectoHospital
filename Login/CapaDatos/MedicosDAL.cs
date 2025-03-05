@@ -95,14 +95,14 @@ namespace CapaDatos
                         cmd.Parameters.AddWithValue("@telefono", medico.Telefono);
                         cmd.Parameters.AddWithValue("@email", medico.Email);
 
-                        cmd.ExecuteNonQuery();
+                        return cmd.ExecuteNonQuery();
                     }
                 }
                 catch (Exception e)
                 {
+                    return -1;
                     throw new Exception("Error al guardar médico: " + e.Message);
                 }
-                return 1;
             }
         }
         public int EliminarMedico(int id)

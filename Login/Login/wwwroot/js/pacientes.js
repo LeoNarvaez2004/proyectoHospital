@@ -34,7 +34,7 @@ function Editar(id) {
             setN("id", data.id);
             setN("nombre", data.nombre);
             setN("apellido", data.apellido);
-            setN("fechaNacimiento", data.especialidadId);
+            setN("fechaNacimiento", data.fechaNacimiento);
             setN("telefono", data.telefono);
             setN("email", data.email);
             setN("direccion", data.direccion);

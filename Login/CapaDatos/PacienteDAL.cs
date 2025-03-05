@@ -29,7 +29,7 @@ namespace CapaDatos
                             paciente.Id = dr.IsDBNull(0) ? -1 : dr.GetInt32(0);
                             paciente.Nombre = dr.IsDBNull(1) ? "" : dr.GetString(1);
                             paciente.Apellido = dr.IsDBNull(2) ? "" : dr.GetString(2);
-                            paciente.FechaNacimiento = dr.IsDBNull(3) ? System.DateTime.MinValue : dr.GetDateTime(3);
+                            paciente.FechaNacimiento = dr.GetDateTime(3);
                             paciente.Telefono = dr.IsDBNull(4) ? "" : dr.GetString(4);
                             paciente.Email = dr.IsDBNull(5) ? "" : dr.GetString(5);
                             paciente.Direccion = dr.IsDBNull(6) ? "" : dr.GetString(6);
@@ -98,14 +98,14 @@ namespace CapaDatos
                         cmd.Parameters.AddWithValue("@email", paciente.Email);
                         cmd.Parameters.AddWithValue("@direccion", paciente.Direccion);
 
-                        cmd.ExecuteNonQuery();
+                        return cmd.ExecuteNonQuery();
                     }
                 }
                 catch (Exception e)
                 {
+                    return -1;
                     throw new Exception("Error al guardar paciente: " + e.Message);
                 }
-                return 1;
             }
         }
         public int EliminarPaciente(int id)

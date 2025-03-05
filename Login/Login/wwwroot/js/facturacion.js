@@ -32,6 +32,7 @@ function Editar(id) {
     if (id != 0) {
         fetchGet("Facturacion/RecuperarFacturacion/?id=" + id, "json", function (data) {
             setN("id", data.id);
+            cargarForaneas("Pacientes", "pacienteId");
             setN("pacienteId", data.pacienteId);
             setN("monto", data.monto);
             setN("metodoPago", data.metodoPago);

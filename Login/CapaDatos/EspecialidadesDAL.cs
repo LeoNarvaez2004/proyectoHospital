@@ -83,14 +83,14 @@ namespace CapaDatos
                         cmd.Parameters.AddWithValue("@id", especialidad.Id);
                         cmd.Parameters.AddWithValue("@nombre", especialidad.Nombre);
 
-                        cmd.ExecuteNonQuery();
+                        return cmd.ExecuteNonQuery();
                     }
                 }
                 catch (Exception e)
                 {
+                    return -1;
                     throw new Exception("Error al guardar especialidad: " + e.Message);
                 }
-                return 1;
             }
         }
         public int EliminarEspecialidad(int id)

@@ -29,7 +29,7 @@ namespace CapaDatos
                             citas.idCita = dr.IsDBNull(0) ? -1 : dr.GetInt32(0);
                             citas.idPaciente = dr.IsDBNull(1) ? -1 : dr.GetInt32(1);
                             citas.idMedico = dr.IsDBNull(2) ? -1 : dr.GetInt32(2);
-                            citas.fecha = dr.IsDBNull(3) ? System.DateTime.MinValue : dr.GetDateTime(3);
+                            citas.fecha = dr.GetDateTime(3);
                             citas.estado = dr.IsDBNull(4) ? "" : dr.GetString(4);
                             lista.Add(citas);
                         }
@@ -93,17 +93,14 @@ namespace CapaDatos
                         cmd.Parameters.AddWithValue("@FechaHora", cita.fecha);
                         cmd.Parameters.AddWithValue("@Estado", cita.estado);
 
-                        cmd.ExecuteNonQuery();
+                        return cmd.ExecuteNonQuery();
 
                     }
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("Error al listar citas: " + e.Message);
-                    throw new Exception("Error al listar citas: " + e.Message);
-                    return 0;
+                    return -1;
                 }
-                return 1;
             }
         }
         public int EliminarCitas(int id)
@@ -113,7 +110,7 @@ namespace CapaDatos
                 try
                 {
                     cn.Open();
-                    using (SqlCommand cmd = new SqlCommand("uspEliminarCitas", cn))
+                    using (SqlCommand cmd = new SqlCommand("uspEliminarCita", cn))
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@id", id);
@@ -124,7 +121,7 @@ namespace CapaDatos
                 }
                 catch (Exception e)
                 {
-                    return 0;
+                    return -1;
                     throw new Exception("Error al listar citas: " + e.Message);
                 }
                 return 1;

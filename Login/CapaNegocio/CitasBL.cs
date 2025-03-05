@@ -20,10 +20,10 @@ namespace CapaNegocio
             CitasDAL objCitasDAL = new CitasDAL();
             return objCitasDAL.GuardarCitas(objCitasCLS);
         }
-        public int EliminarCita(int idCita)
+        public int EliminarCita(int id)
         {
             CitasDAL objCitasDAL = new CitasDAL();
-            return objCitasDAL.EliminarCitas(idCita);
+            return objCitasDAL.EliminarCitas(id);
         }
         public CitasCLS RecuperarCitas(int idCita)
         {

@@ -2,17 +2,6 @@
     listarCitas();
 }
 
-async function cargarForaneas(tabla, id) {
-    fetchGet("Generic/obtenerClaves/?tabla=" + tabla, "json", function (data) {
-        for (let clave of data) {
-            let foranea = document.createElement("option");
-            foranea.value = clave;
-            foranea.textContent = clave;
-            document.getElementById(id).appendChild(foranea);
-        }
-    });
-}
-
 async function listarCitas() {
     pintar({
         url: "Citas/ListarCitas",
@@ -29,7 +18,7 @@ async function guardar() {
     let frm = new FormData(form);
     confirmacion(undefined, undefined, function (resp) {
         fetchPost("Citas/guardarCita", "json", frm, function (res) {
-            if (res == 0) {
+            if (res == -1) {
                 ErrorA();
                 return;
             }
@@ -54,6 +43,8 @@ function Editar(id) {
     }
     else {
         limpiarForm();
+        cargarForaneas("Pacientes", "idPaciente");
+        cargarForaneas("Medicos", "idMedico");
         setN("idCita", id);
     }
 

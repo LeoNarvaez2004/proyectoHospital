@@ -43,6 +43,18 @@ async function fetchGet(url, tipoRespuesta, callback) {
 
 }
 
+async function cargarForaneas(tabla, id) {
+    fetchGet("Generic/obtenerClaves/?tabla=" + tabla, "json", function (data) {
+        let select = document.getElementById(id);
+        select.innerHTML = "";
+        for (let clave of data) {
+            let foranea = document.createElement("option");
+            foranea.value = clave;
+            foranea.textContent = clave;
+            select.appendChild(foranea);
+        }
+    });
+}
 async function fetchPost(url, tipoRespuesta, frm, callback) {
     try {
         let urlCompleta = window.location.protocol + "//" + window.location.host + "/" + url;
@@ -168,18 +180,17 @@ function Exito() {
     Swal.fire({
         position: "top-end",
         icon: "success",
-        title: "Your work has been saved",
+        title: "Se aplicaron los cambios",
         showConfirmButton: false,
-        timer: 1500
+        timer: 700
     });
 }
 
-function ErrorA() {
+function ErrorA(mensaje = "Debes rellenar todos los campos") {
     Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Something went wrong!",
-        footer: '<a href="#">Why do I have this issue?</a>'
+        text: mensaje
     });
 }
 function confirmacion(titulo = "Confirmacion", texto = "¿Desea guardar los cambios?", callback) {
