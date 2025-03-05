@@ -1,8 +1,46 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<head>
+	<link href="~/css/home.css" rel="stylesheet" />
+</head>
+<h2>Preguntas mas frecuentes</h2>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div style="visibility: hidden; position: absolute; width: 0px; height: 0px;">
+    <svg xmlns="http://www.w3.org/2000/svg">
+        <symbol viewBox="0 0 24 24" id="expand-more">
+            <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" /><path d="M0 0h24v24H0z" fill="none" />
+        </symbol>
+        <symbol viewBox="0 0 24 24" id="close">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" /><path d="M0 0h24v24H0z" fill="none" />
+        </symbol>
+    </svg>
 </div>
+
+<details open>
+    <summary>
+        ¿Cómo puedo trabajar aquí?
+        <svg class="control-icon control-icon-expand" width="24" height="24" role="presentation"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#expand-more" /></svg>
+        <svg class="control-icon control-icon-close" width="24" height="24" role="presentation"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close" /></svg>
+    </summary>
+    <p>Para formar parte de nuestro equipo, puede enviar su currículum vitae a través de nuestro portal de empleo  o contactar con nuestro departamento de recursos humanos al 091364834. Valoramos la experiencia y la vocación de servicio en el ámbito sanitario.</p>
+</details>
+
+<details>
+    <summary>
+        ¿Dónde estamos ubicados?
+        <svg class="control-icon control-icon-expand" width="24" height="24" role="presentation"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#expand-more" /></svg>
+        <svg class="control-icon control-icon-close" width="24" height="24" role="presentation"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close" /></svg>
+    </summary>
+    <p>Nuestro hospital está ubicado en el Valle de los Chillos - San Juan de Dios. Contamos con estacionamiento gratuito para pacientes y visitantes, y estamos accesibles mediante las líneas de transporte público Termas Turis.</p>
+</details>
+
+<details>
+    <summary>
+        Visión y Misión
+        <svg class="control-icon control-icon-expand" width="24" height="24" role="presentation"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#expand-more" /></svg>
+        <svg class="control-icon control-icon-close" width="24" height="24" role="presentation"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close" /></svg>
+    </summary>
+    <p><strong>Misión:</strong> Brindar atención médica de alta calidad, segura y centrada en el paciente, promoviendo el bienestar de nuestra comunidad con compasión y profesionalismo.</p>
+    <p><strong>Visión:</strong> Ser reconocidos como un centro de excelencia en la atención médica, liderando la innovación y la mejora continua en los servicios de salud para garantizar una vida más saludable para todos.</p>
+</details>
