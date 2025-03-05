@@ -91,7 +91,6 @@ namespace Login.Controllers
                 return View();
             }
         }
-        [HttpPost] // Asegúrate de que sea un método POST
         [HttpPost]
         public async Task<IActionResult> Logout()
         {
