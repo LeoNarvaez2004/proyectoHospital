@@ -17,7 +17,7 @@ async function guardar() {
     let frm = new FormData(form);
     confirmacion(undefined, undefined, function (resp) {
         fetchPost("Facturacion/GuardarFacturacion", "json", frm, function (res) {
-            if (res == 0) {
+            if (res == -1) {
                 ErrorA();
                 return;
             }
@@ -42,6 +42,7 @@ function Editar(id) {
     }
     else {
         limpiarForm();
+        cargarForaneas("Pacientes", "pacienteId");
         setN("id", id);
     }
 
@@ -50,6 +51,10 @@ function Editar(id) {
 function Eliminar(id) {
     fetchGet("Facturacion/EliminarFacturacion/?id=" + id, "json", function (data) {
         confirmacion(undefined, "¿Seguro desea eliminar?", function (resp) {
+            if (data == -1) {
+                ErrorA("No se puede eliminar, por dependencia con otras tablas");
+                return;
+            }
             limpiarForm();
             Exito();
         });

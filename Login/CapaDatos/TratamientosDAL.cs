@@ -119,6 +119,7 @@ namespace CapaDatos
                 }
                 catch (Exception e)
                 {
+                    return -1;
                     throw new Exception("Error al eliminar tratamiento: " + e.Message);
                 }
                 return 1;

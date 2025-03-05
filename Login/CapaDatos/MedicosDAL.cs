@@ -122,7 +122,7 @@ namespace CapaDatos
                 }
                 catch (Exception e)
                 {
-                    return -3; //-3 = error en clave foranea
+                    return -1;
                     throw new Exception("Error al eliminar médico: " + e.Message);
                 }
                 return 1;

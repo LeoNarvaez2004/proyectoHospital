@@ -125,6 +125,7 @@ namespace CapaDatos
                 }
                 catch (Exception e)
                 {
+                    return -1;
                     throw new Exception("Error al eliminar paciente: " + e.Message);
                 }
                 return 1;

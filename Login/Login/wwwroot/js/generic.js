@@ -201,7 +201,7 @@ function confirmacion(titulo = "Confirmacion", texto = "¿Desea guardar los camb
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Si, eliminar!"
+        confirmButtonText: "Si"
     }).then((result) => {
         if (result.isConfirmed) {
             callback();
